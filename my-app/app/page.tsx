@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { Montserrat } from "next/font/google";
 import { BsBell, BsTwitter } from "react-icons/bs";
 import { BiHash, BiHomeCircle, BiNotification, BiUser } from "react-icons/bi";
 import { IoMailOutline } from "react-icons/io5";
 import { PiBookmarkSimpleLight } from "react-icons/pi";
+import FeedCard from "@/components/FeedCards";
+import { SlOptions } from "react-icons/sl";
 
 interface twitterSideBar {
   title: string;
@@ -35,24 +36,28 @@ const sideBarItem: twitterSideBar[] = [
     title: "Profile",
     icon: <BiUser />,
   },
+  {
+    title: "More",
+    icon: <SlOptions />,
+  },
 ];
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-12 h-screen w-screen px-56 style-Montserrat">
-      <div className="col-span-3 justify-start pt-8 px-5">
-        <div className="text-3xl h-fit hover:bg-gray-800 rounded-full px-3 py-3 cursor-pointer transition-all w-fit">
+    <div className="grid grid-cols-12 h-screen w-screen px-56 style-Montserrat overflow-auto">
+      <div className="col-span-3 flex flex-col pt-8">
+        <div className="text-4xl h-fit w-fit hover:bg-gray-600 rounded-full p-1 cursor-pointer transition-all mt-2">
           <BsTwitter />
         </div>
 
-        <div className="mt-2 text-2xl font-seriff px-5">
+        <div className="mt-1 text-xl pr-5 ">
           <ul>
             {sideBarItem.map((item) => (
               <li
                 key={item.title}
-                className="flex justify-start items-center gap-2 hover:bg-gray-800 rounded-full px-5 py-2 cursor-pointer w-fit"
+                className="flex justify-start items-center gap-4 hover:bg-gray-800 rounded-full px-3 py-3 w-fit cursor-pointer mt-2"
               >
-                <span>{item.icon}</span>
+                <span className="text-2xl">{item.icon}</span>
                 <span>{item.title}</span>
               </li>
             ))}
@@ -62,7 +67,14 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div className="col-span-6 border-r-[0.2px] border-l-[0.2px] border-white "></div>
+      <div className="col-span-5 border-r-[0.2px] border-l-[0.2px] border-gray-600">
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+      </div>
       <div className="col-span-3"></div>
     </div>
   );
