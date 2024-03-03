@@ -6,12 +6,12 @@ import { PiBookmarkSimpleLight } from "react-icons/pi";
 import FeedCard from "@/components/FeedCards";
 import { SlOptions } from "react-icons/sl";
 
-interface twitterSideBar {
+interface TwitterSidebar {
   title: string;
   icon: React.ReactNode;
 }
 
-const sideBarItem: twitterSideBar[] = [
+const sideBarItem: TwitterSidebar[] = [
   {
     title: "Home",
     icon: <BiHomeCircle />,
@@ -44,7 +44,7 @@ const sideBarItem: twitterSideBar[] = [
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-12 h-screen w-screen px-56 style-Montserrat overflow-auto">
+    <div className="grid grid-cols-12 h-screen w-screen px-56 style-Montserrat">
       <div className="col-span-3 flex flex-col pt-8">
         <div className="text-4xl h-fit w-fit hover:bg-gray-600 rounded-full p-1 cursor-pointer transition-all mt-2">
           <BsTwitter />
@@ -67,13 +67,15 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div className="col-span-5 border-r-[0.2px] border-l-[0.2px] border-gray-600">
-        <FeedCard />
-        <FeedCard />
-        <FeedCard />
-        <FeedCard />
-        <FeedCard />
-        <FeedCard />
+      <div className="col-span-5 border-r-[0.2px] border-l-[0.2px] border-gray-600 overflow-y-auto">
+        <div className="max-h-screen overflow-y-auto">
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+        </div>
       </div>
       <div className="col-span-3"></div>
     </div>
